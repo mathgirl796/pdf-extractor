@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainWindow</class>
+ <widget class="QMainWindow" name="mainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1179</width>
+    <height>638</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="acceptDrops">
+   <bool>false</bool>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1181</width>
+      <height>611</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="4" column="3">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>选择不该被删除的行后点击“进行过滤”</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="2">
+      <widget class="QLabel" name="pdf_path">
+       <property name="text">
+        <string>pdf路径未选择</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QPushButton" name="do_filter">
+       <property name="text">
+        <string>进行过滤</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>下面是将被删除的行</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QListWidget" name="inter_list">
+       <property name="selectionMode">
+        <enum>QAbstractItemView::MultiSelection</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="4">
+      <widget class="QPushButton" name="do_output">
+       <property name="text">
+        <string>输出文件</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="4">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>选择多余的行后点击“输出文件”</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="4">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>下面是将被输出的行</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" colspan="2">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="select_pdf">
+         <property name="text">
+          <string>加载pdf文件</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="label_name">
+         <property name="text">
+          <string>确认标记名字</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="label_inter">
+         <property name="text">
+          <string>确认标记中间行</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="set_outdir">
+         <property name="text">
+          <string>选择输出目录</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="do_work">
+         <property name="text">
+          <string>初步处理</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>在下面标记名字</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>在下面标记中间行</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0" colspan="2">
+      <widget class="QLabel" name="output_dir">
+       <property name="text">
+        <string>输出目录未选择</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QListWidget" name="name_list">
+       <property name="selectionMode">
+        <enum>QAbstractItemView::MultiSelection</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="4">
+      <widget class="QListWidget" name="string_list">
+       <property name="selectionMode">
+        <enum>QAbstractItemView::MultiSelection</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="3">
+      <widget class="QListWidget" name="shit_list">
+       <property name="selectionMode">
+        <enum>QAbstractItemView::MultiSelection</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
