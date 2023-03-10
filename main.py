@@ -7,7 +7,7 @@ import sys
 def select_pdf(ui):
     # select pdf
     directory = QFileDialog.getOpenFileNames(None, 'Select PDF', ".", 'PDF (*.pdf)')
-    if not directory:
+    if not directory[0]:
         return
     ui.data['pdf_path'] = directory[0][0]
     ui.pdf_path.setText(ui.data['pdf_path'])
@@ -42,11 +42,15 @@ def label_inter(ui):
     print(select_indexes, ui.data['inter_poses'])
 
 def do_work(ui):
-    ui.data['string_list'], ui.data['shit_list'] = utils.text_objs_to_string_list(
-        ui.data['text_objs'],
-        ui.data['name_poses'],
-        ui.data['inter_poses'],
-    )
+    try:
+        ui.data['string_list'], ui.data['shit_list'] = utils.text_objs_to_string_list(
+            ui.data['text_objs'],
+            ui.data['name_poses'],
+            ui.data['inter_poses'],
+        )
+    except:
+        QMessageBox.warning(None, 'Warning', '请先选择名字和中间行')
+        return
     # inflate string list
     ui.string_list.clear()
     for i in ui.data['string_list']:
@@ -60,12 +64,16 @@ def do_filter(ui):
     select_indexes = [x.row() for x in ui.shit_list.selectedIndexes()]
     ui.data['white_list'] = [ui.data['shit_list'][i][2] for i in select_indexes]
     print(ui.data['white_list'])
-    ui.data['string_list'], _ = utils.text_objs_to_string_list(
-        ui.data['text_objs'],
-        ui.data['name_poses'],
-        ui.data['inter_poses'],
-        white_list=ui.data['white_list'],
-    )
+    try:
+        ui.data['string_list'], _ = utils.text_objs_to_string_list(
+            ui.data['text_objs'],
+            ui.data['name_poses'],
+            ui.data['inter_poses'],
+            white_list=ui.data['white_list'],
+        )
+    except:
+        QMessageBox.warning(None, 'Warning', '请先选择名字和中间行')
+        return
     # inflate string list
     ui.string_list.clear()
     for i in ui.data['string_list']:
@@ -73,13 +81,15 @@ def do_filter(ui):
 
 def do_output(ui):
     if 'output_dir' not in ui.data:
-        QMessageBox.warning(None, 'Warning', 'Please select output directory first.')
+        QMessageBox.warning(None, 'Warning', '请先选择输出目录')
         return
+    select_indexes = [x.row() for x in ui.string_list.selectedIndexes()]
     file_path = f"{ui.data['output_dir']}/output-{utils.string_time()}.txt"
     print(file_path)
     with open(file_path, 'w', encoding="utf-8") as f:
-        for string in ui.data['string_list']:
-            f.write(f"{string}\n")
+        for i, string in enumerate(ui.data['string_list']):
+            if i not in select_indexes:
+                f.write(f"{string}\n")
 
 def main():
     app = QApplication(sys.argv)
